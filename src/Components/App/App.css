@@ -1,0 +1,26 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #06111C;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  color:#FFEB4D;
+  margin-top: 10px;
+  font-weight: 800;
+  font-size: 2.5rem;
+}
+.square-container {
+  margin-top: 30px;
+  width:900px;
+  height: 540px;
+  border:5px solid #262626;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20px);
+  grid-template-rows: repeat(auto-fit, 20px);
+}
+.square {
+  border:1px solid #262626;
+}
