@@ -6,32 +6,105 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squareID: [],
-      generation: null,
+      generation: 0,
       gameOn: false,
       gameReset: false,
-      currentGameState: [],
+      currentGameState: Array(1214).fill(0),
     }
     this.handleColorSquare = this.handleColorSquare.bind(this);
     this.handleGameState = this.handleGameState.bind(this);
     this.handleResetAll = this.handleResetAll.bind(this);
+    this.handleGameLogic = this.handleGameLogic.bind(this);
   }
   handleColorSquare = (event) => {
     const square = event.target.id;
-    const currState = this.state.squareID;
-    if(currState.includes(square)) {
-      event.target.style.backgroundColor = null;
+    if(this.state.currentGameState[Number(square)] === 0) {
+      const gameValue = [...this.state.currentGameState]
+      gameValue[Number(square)] = 1
       this.setState({
-        squareID: currState.filter(e => e !== square)
+        currentGameState: gameValue
       })
     } else {
-      event.target.style.backgroundColor = '#FFEB4D';
+      const gameValue = [...this.state.currentGameState]
+      gameValue[Number(square)] = 0
       this.setState({
-        squareID: [...currState, square]
-      })
-    }
-    
+        currentGameState: gameValue
+      })  
+    } 
   }
+  handleGameLogic() {
+    const currGameState = [...this.state.currentGameState];
+    let newArr = [];
+    let index;
+    let value;
+    let squareCounter = 0;
+    for(let i = 0; i < currGameState.length; i++) {
+      squareCounter = 0;
+      if(currGameState[i - 44] === 1) {
+          squareCounter += 1
+      } 
+      if(currGameState[i - 45] === 1) {
+        squareCounter += 1
+      } 
+      if(currGameState[i - 46] === 1) {
+        squareCounter += 1
+      } 
+      if(currGameState[i - 1] === 1) {
+        squareCounter += 1      
+      } 
+      if(currGameState[i + 1] === 1) {
+        squareCounter += 1        
+      } 
+      if(currGameState[i + 44] === 1) {
+        squareCounter += 1         
+      } 
+      if(currGameState[i + 45] === 1) {
+        squareCounter += 1        
+      } 
+      if(currGameState[i + 46] === 1) {
+        squareCounter += 1      
+      } 
+      if(currGameState[i] === 1) {
+        if(squareCounter >= 2 && squareCounter <= 3) {
+          index = i;
+          value = 1;
+          newArr.push(index);
+          newArr.push(value);
+        } else {
+          index = i;
+          value = 0;
+          newArr.push(index);
+          newArr.push(value);
+        }
+        
+      } else {
+        if(squareCounter === 3) {
+          index = i;
+          value = 1;
+          newArr.push(index);
+          newArr.push(value);
+        }
+      }
+    }
+    if(newArr.length > 0) {
+      while(newArr.length > 0) {
+        currGameState[newArr[0]] = newArr[1]
+        newArr.splice(0, 2)
+      }
+    }
+    this.setState({
+      currentGameState: currGameState
+    })
+  }
+  handleGenerations() {
+    if(this.state.gameOn === true) {
+      this.handleGameLogic()
+      this.setState(prevState => ({
+        generation: prevState.generation + 1
+      }))
+    }
+  }
+
   handleGameState = (event) => {
     const gameState = this.state.gameOn;
     if(gameState === false) {
@@ -47,10 +120,10 @@ class App extends React.Component {
   }
   handleResetAll = (event) => {
     this.setState({
-      squareID: [],
-      generation: null,
+      generation: 0,
       gameOn: false,
       gameReset: true,
+      currentGameState: Array(1214).fill(0)
     })
     event.preventDefault();
   }
@@ -61,17 +134,19 @@ class App extends React.Component {
       })
     }
   }
+  componentDidMount() {
+      this.interval = setInterval(() => this.handleGenerations(), 150);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     let squares = [];
     for(let i = 0; i < 1215; i++) {
-      /*if(this.state.generation === null) {
-        this.state.currentGameState.push(0)
-      }
-      const currGameState = this.state.currentGameState;
-      console.log(this.state.currentGameState)*/
       squares.push(
         <div className='square'
-          style={this.state.gameReset === true ? {backgroundColor: null} : {}}
+          style={this.state.currentGameState[i] === 1 ? {backgroundColor: '#FFEB4D'} : {}}
           title='You can select squares yourself'
           onClick={this.handleColorSquare}
           key={i}
