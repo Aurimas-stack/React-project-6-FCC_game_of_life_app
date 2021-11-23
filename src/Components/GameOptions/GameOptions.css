@@ -33,3 +33,19 @@
 .generation-counter > p {
     margin-top:2px;
 }
+.pattern-options {
+    -webkit-box-shadow: 0px 2px 0px 1px rgba(0,0,0,0.86); 
+    box-shadow: 0px 2px 0px 1px rgba(0,0,0,0.86);
+}
+.pattern-options:hover {
+    background-color: #FFEB4D;
+    cursor:default;
+    color:#000;
+}
+.pattern-option {
+    margin:7px 0;
+}
+.pattern-option:hover {
+    cursor: pointer;
+    font-weight: 800;
+}
