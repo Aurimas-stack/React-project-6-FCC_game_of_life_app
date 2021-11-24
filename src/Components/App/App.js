@@ -22,9 +22,8 @@ class App extends React.Component {
   }
   handleColorSquare = (event) => {
     const square = event.target.id;
-    console.log(square)
-    if(this.state.currentGameState[Number(square)] === 0) {
-      const gameValue = [...this.state.currentGameState]
+    const gameValue = [...this.state.currentGameState]
+    if(this.state.currentGameState[Number(square)] === 0) { 
       gameValue[Number(square)] = 1
       this.setState({
         currentGameState: gameValue
@@ -40,8 +39,7 @@ class App extends React.Component {
   handleGameLogic() {
     const currGameState = [...this.state.currentGameState];
     let newArr = [];
-    let index;
-    let value;
+    let index, value;
     let squareCounter = 0;
     for(let i = 0; i < currGameState.length; i++) {
       squareCounter = 0;
