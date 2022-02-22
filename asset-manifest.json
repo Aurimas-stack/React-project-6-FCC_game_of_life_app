@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/React-project-6-FCC_game_of_life_app/static/css/main.3b5d7d00.chunk.css",
+    "main.js": "/React-project-6-FCC_game_of_life_app/static/js/main.e99ac93a.chunk.js",
+    "main.js.map": "/React-project-6-FCC_game_of_life_app/static/js/main.e99ac93a.chunk.js.map",
+    "runtime-main.js": "/React-project-6-FCC_game_of_life_app/static/js/runtime-main.c4488084.js",
+    "runtime-main.js.map": "/React-project-6-FCC_game_of_life_app/static/js/runtime-main.c4488084.js.map",
+    "static/js/2.8550b02b.chunk.js": "/React-project-6-FCC_game_of_life_app/static/js/2.8550b02b.chunk.js",
+    "static/js/2.8550b02b.chunk.js.map": "/React-project-6-FCC_game_of_life_app/static/js/2.8550b02b.chunk.js.map",
+    "static/js/3.54e7ea55.chunk.js": "/React-project-6-FCC_game_of_life_app/static/js/3.54e7ea55.chunk.js",
+    "static/js/3.54e7ea55.chunk.js.map": "/React-project-6-FCC_game_of_life_app/static/js/3.54e7ea55.chunk.js.map",
+    "index.html": "/React-project-6-FCC_game_of_life_app/index.html",
+    "static/css/main.3b5d7d00.chunk.css.map": "/React-project-6-FCC_game_of_life_app/static/css/main.3b5d7d00.chunk.css.map",
+    "static/js/2.8550b02b.chunk.js.LICENSE.txt": "/React-project-6-FCC_game_of_life_app/static/js/2.8550b02b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c4488084.js",
+    "static/js/2.8550b02b.chunk.js",
+    "static/css/main.3b5d7d00.chunk.css",
+    "static/js/main.e99ac93a.chunk.js"
+  ]
+}
